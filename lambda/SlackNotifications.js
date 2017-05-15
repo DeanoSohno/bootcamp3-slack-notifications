@@ -29,7 +29,7 @@ exports.handler = function(event, context) {
             username: username,
             text: "*" + autoScaleGroupName + "*",
             attachments: [{ text: slackMessage, mrkdwn_in: ["text"] }],
-            icon_emoji: ":doom_mad:"
+            icon_emoji: ":bananadance:"
         };
 
         var options = {
