@@ -10,7 +10,7 @@ resource "aws_lambda_function" "bc3_slack_notify_lamdda" {
   function_name = "${var.function_name}"
   description = "Send notifications to Slack form code start"
 
-  runtime = "nodejs4.3"
+  runtime = "${var.runtime}"
   handler = "${var.function_name}.handler"
 
   role = "${var.role}"
@@ -26,3 +26,5 @@ resource "aws_lambda_function" "bc3_slack_notify_lamdda" {
     }
   }
 }
+
+output "file_path" { value = "${data.archive_file.bc3_slack_notify_js.output_path}"}
