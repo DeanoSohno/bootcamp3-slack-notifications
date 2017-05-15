@@ -13,7 +13,7 @@ resource "aws_lambda_function" "bc3_slack_notify_lambda" {
   runtime = "${var.runtime}"
   handler = "${var.function_name}.handler"
 
-  role = "${var.role}"
+  role = "${aws_iam_role.bc3_slack_notify_role.arn}"
 
   filename = "${data.archive_file.bc3_slack_notify_js.output_path}"
   source_code_hash = "${base64sha256(file(data.archive_file.bc3_slack_notify_js.output_path))}"

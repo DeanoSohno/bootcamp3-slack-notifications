@@ -8,7 +8,7 @@ module "notifications" {
 
     source = "../../modules/notifications"
 
-    name = "${var.project_name}"
+    project_name = "${var.project_name}"
 
     runtime = "${var.runtime}"
     function_name = "${var.function_name}"
