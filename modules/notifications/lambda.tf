@@ -1,7 +1,7 @@
 data "archive_file" "bc3_slack_notify_js" {
   type = "zip"
-  source_file = "../../lambda/SlackNotifications.js"
-  output_path = "../../lambda/SlackNotifications.zip"
+  source_file = "../../lambda/${var.file_name}.js"
+  output_path = "../../lambda/${var.file_name}.zip"
 }
 
 resource "aws_lambda_function" "bc3_slack_notify_lambda" {
@@ -11,7 +11,7 @@ resource "aws_lambda_function" "bc3_slack_notify_lambda" {
   description = "Send notifications to Slack form code start"
 
   runtime = "${var.runtime}"
-  handler = "${var.function_name}.handler"
+  handler = "${var.file_name}.handler"
 
   role = "${aws_iam_role.bc3_slack_notify_role.arn}"
 

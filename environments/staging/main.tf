@@ -10,6 +10,7 @@ module "notifications" {
 
     project_name = "${var.project_name}"
 
+    file_name = "${var.file_name}"
     runtime = "${var.runtime}"
     function_name = "${var.function_name}"
     role = "${var.role}"
