@@ -1,4 +1,4 @@
-variable "name" { }
+variable "project_name" { }
 variable "region" { }
 
 # lambda

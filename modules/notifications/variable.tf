@@ -1,4 +1,4 @@
-variable "name"     { }
+variable "project_name"     { }
 
 variable "runtime"  { }
 variable "role"     { }
