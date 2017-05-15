@@ -4,7 +4,7 @@ data "archive_file" "bc3_slack_notify_js" {
   output_path = "../../lambda/SlackNotifications.zip"
 }
 
-resource "aws_lambda_function" "bc3_slack_notify_lamdda" {
+resource "aws_lambda_function" "bc3_slack_notify_lambda" {
   depends_on = ["data.archive_file.bc3_slack_notify_js"]
 
   function_name = "${var.function_name}"
