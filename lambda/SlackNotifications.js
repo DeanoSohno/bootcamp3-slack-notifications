@@ -3,33 +3,48 @@ var util = require('util');
 
 exports.handler = function(event, context) {
     try {
-        console.log("----- " + event + " ----------")
         var message = JSON.parse(event.Records[0].Sns.Message);
-        //var message = event.Records[0].Sns.Message;
-
-        console.log("- --- -- " + message + " -- -- -- ")
 
         var channel = process.env.SLACK_CHANNEL
         var username = process.env.SLACK_USERNAME
         var webhookId = process.env.SLACK_WEBHOOK
 
         var eventType = message.Event;
-        var autoScaleGroupName = message.AutoScalingGroupName;
+        var resultMessage = message.ResultMessage;
         var description = message.Description;
-        var cause = message.Cause;
+
+        var icon_emoji = ":loudspeaker:"
+        var result_emoji = "";
+        var color = "good";
+
+        if (resultMessage == "Build success") {
+            result_emoji = ":bananadance:"
+        }
+
+        if (resultMessage == "Build failed") {
+            result_emoji = ":facepalm:"
+            color = "danger"
+        }
+
 
         var slackMessage = [
-            "*Event*: " + eventType,
+            "*Event*: " + resultMessage + " " + result_emoji,
             "*Description*: " + description,
-            "*Cause*: " + cause,
         ].join("\n");
 
         var postData = {
             channel: channel,
             username: username,
-            text: "*" + autoScaleGroupName + "*",
-            attachments: [{ text: slackMessage, mrkdwn_in: ["text"] }],
-            icon_emoji: ":bananadance:"
+            text: "*" + eventType + "*",
+            attachments: [
+                {
+                    color: color,
+                    text: slackMessage,
+                    mrkdwn_in: ["text"],
+                    mrkdwn: true
+                }
+            ],
+            icon_emoji: icon_emoji
         };
 
         var options = {
