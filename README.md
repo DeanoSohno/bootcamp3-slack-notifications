@@ -1,5 +1,5 @@
 # Bootcamp 3 Slack Notification 
-As par of the bootcamp 3 final project we ha decided to add an slack notification interface that allows notifications from the continues integration process to be presented in a slack channel.
+As par of the bootcamp 3 final project we have decided to add an slack notification interface that allows notifications from the continues integration process to be presented in a slack channel.
 
 ## Motivation
 As well as to demonstrate how common intercomunication tool like slack allows the shareholders to stay current with the status of the continues integration process.
